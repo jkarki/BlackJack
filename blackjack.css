@@ -1,0 +1,47 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+
+#dealer-cards img {
+    height: 200px;
+    width: 140px;
+    margin: 5px;
+}
+
+#your-cards img {
+    height: 200px;
+    width: 140px;
+    margin: 5px;
+}
+
+button {
+    width: 120px;
+    height: 60px;
+    font-size: 24px;
+    margin: 10px;
+}
+
+h2 {
+    margin-top: 30px;
+}
+
+#results {
+    font-size: 24px;
+    margin-top: 20px;
+}
+
+#balance {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+}
+
+#end-game {
+    width: 120px;
+    height: 60px;
+    font-size: 24px;
+    margin: 10px auto;
+    display: block;
+}
