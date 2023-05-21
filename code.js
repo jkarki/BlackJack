@@ -50,37 +50,37 @@ function shuffleDeck() {
 
 
 function deal() {
-   wager = parseFloat(prompt("How much would you like to wager?"));
-  
-   // Validate the entered amount
-   if (isNaN(wager) || wager <= 0 || wager > currentMoney) {
-       alert("Invalid wager amount. Please enter a valid wager.");
-       return;
-   }
+    wager = parseFloat(prompt("How much would you like to wager?"));
+    
+    // Validate the entered amount
+    if (isNaN(wager) || wager <= 0 || wager > currentMoney) {
+        alert("Invalid wager amount. Please enter a valid wager.");
+        return;
+    }
 
+    // Deduct the wager amount from the current money
+    currentMoney -= wager;
+    resetGame();
+    hidden = deck.pop();
+    dealerHand.push(hidden);
+    document.getElementById("dealer-cards").innerHTML = '<img id="hidden" src="./cards/BACK.png">';
 
-   // Deduct the wager amount from the current money
-   currentMoney -= wager;
-   resetGame();
-   hidden = deck.pop();
-   dealerHand.push(hidden);
-   document.getElementById("dealer-cards").innerHTML = '<img id="hidden" src="./cards/BACK.png">';
-   document.getElementById("dealer-cards").innerHTML += '<img src="./cards/' + hidden.value + '-' + hidden.type + '.png">';
+    let card = deck.pop();
+    dealerHand.push(card);
+    document.getElementById("dealer-cards").innerHTML += '<img src="./cards/' + card.value + '-' + card.type + '.png">';
 
+    for (let i = 0; i < 2; i++) {
+        let yourCard = deck.pop();
+        yourHand.push(yourCard);
+        yourAmount += getCardAmount(yourCard);
+        document.getElementById("your-cards").innerHTML += '<img src="./cards/' + yourCard.value + '-' + yourCard.type + '.png">';
+    }
 
-   for (let i = 0; i < 2; i++) {
-       let card = deck.pop();
-       yourHand.push(card);
-       yourAmount += getCardAmount(card);
-       document.getElementById("your-cards").innerHTML += '<img src="./cards/' + card.value + '-' + card.type + '.png">';
-   }
-
-
-   updateSums();
-   updateAmount();
-   document.getElementById("deal").disabled = true;
-   document.getElementById("hit").disabled = false;
-   document.getElementById("stand").disabled = false;
+    updateSums();
+    updateAmount();
+    document.getElementById("deal").disabled = true;
+    document.getElementById("hit").disabled = false;
+    document.getElementById("stand").disabled = false;
 }
 
 
