@@ -48,7 +48,6 @@ function shuffleDeck() {
    }
 }
 
-
 function deal() {
     wager = parseFloat(prompt("How much would you like to wager?"));
     
@@ -61,14 +60,17 @@ function deal() {
     // Deduct the wager amount from the current money
     currentMoney -= wager;
     resetGame();
+    
+    // Create the dealer's hidden card
     hidden = deck.pop();
-    dealerHand.push(hidden);
     document.getElementById("dealer-cards").innerHTML = '<img id="hidden" src="./cards/BACK.png">';
 
+    // Deal one visible card for the dealer
     let card = deck.pop();
     dealerHand.push(card);
     document.getElementById("dealer-cards").innerHTML += '<img src="./cards/' + card.value + '-' + card.type + '.png">';
 
+    // Deal two cards for the player
     for (let i = 0; i < 2; i++) {
         let yourCard = deck.pop();
         yourHand.push(yourCard);
